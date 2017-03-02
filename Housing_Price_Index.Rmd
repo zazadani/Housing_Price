@@ -34,23 +34,23 @@ install.packages("nnet")
 library(nnet)
 
 ```
-#Regression
+#Regression: testing multinom
 ``` {r}
 multinom(as.factor(SalePrice[1:10]) ~ SaleType[1:10] + GarageCond[1:10], data=(traindata))
 
 traindata$SalePrice[1:10]
 
 ```
-#Regression
-??lim
+#Regression: testing lm
+
 ``` {r}
 
 lm(SalePrice~SaleType + GarageCond, traindata)
 
 
-lm(loss~.,AllState.Dataframe)
+## lm(loss~.,AllState.Dataframe)
 
-model <-glm(formula = Survived~ Fare + Age, data = Datatrain, family = "binomial")
+## model <-glm(formula = Survived~ Fare + Age, data = Datatrain, family = "binomial")
 
 
 ```
@@ -171,7 +171,7 @@ traindata[!complete.cases(traindata$SalePrice),81]
 
 ```
 
-
+## Structure: 
 ``` {r}
 str(traindata)
 str(traindata[, 1:5])
@@ -182,32 +182,3 @@ str(traindata[ , 30:39])
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-for (i in seq_along(traindata)) {
-traindata[!complete.cases(traindata),c(1:4)] 
-}
-
-
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
