@@ -54,8 +54,9 @@ model <-glm(formula = Survived~ Fare + Age, data = Datatrain, family = "binomial
 
 
 ```
-## Missing Data
 
+## Missing Data
+``` {r}
 traindata[!complete.cases(traindata$MSSubClass), 2 ]
 traindata[!complete.cases(traindata$MSZoning), 2 ]
 traindata[!complete.cases(traindata$LotFrontage), 2 ]
@@ -168,24 +169,28 @@ str(traindata[ , 80:81])
 traindata[!complete.cases(traindata$SaleCondition),80] 
 traindata[!complete.cases(traindata$SalePrice),81] 
 
+```
 
 
-
-
-
-
-
-
-
-
-
-
+``` {r}
 str(traindata)
 str(traindata[, 1:5])
 str(traindata[, 6:11])
 str(traindata[ , 12:19])
 str(traindata[ , 20:29])
 str(traindata[ , 30:39])
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
