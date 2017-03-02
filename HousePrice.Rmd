@@ -57,9 +57,6 @@ lm(loss~.,AllState.Dataframe)
 
 model <-glm(formula = Survived~ Fare + Age, data = Datatrain, family = "binomial")
 
-#--------Hajar
-glm(formula = SalePrice ~ as.factor(SaleType) + MSSubClass, data=traindata)
-traindata$SalePrice
 
 ```
 ## Missing Data
