@@ -1,5 +1,5 @@
 ---
-title: "House Price 6 days"
+title: "Housing Price"
 author: "Zahra N."
 date: "2/24/2017"
 output: html_document
@@ -11,10 +11,9 @@ output: html_document
 ```{r}
 path <- "~/Documents/R Programming/HousePrice"
 setwd (path)
-getwd()
 ```
 
-#Reading Data
+##Reading Data
 
 ``` {r}
 traindata <- read.csv("train.csv")
