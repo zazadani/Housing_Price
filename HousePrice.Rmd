@@ -1,0 +1,216 @@
+---
+title: "House Price 6 days"
+author: "Zahra N."
+date: "2/24/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r cars}
+path <- "~/Documents/R Programming/HousePrice"
+setwd (path)
+getwd()
+```
+
+#Reading Data
+
+``` {r}
+traindata <- read.csv("train.csv")
+backuptraindata <-traindata
+head(traindata, 5)
+summary(traindata)
+str(traindata)
+tail(traindata, 5)
+dim(traindata)
+read.csv("train.csv")
+
+```
+
+
+# package
+``` {r}
+install.packages("nnet")
+library(nnet)
+
+```
+#Regression
+``` {r}
+multinom(as.factor(SalePrice[1:10]) ~ SaleType[1:10] + GarageCond[1:10], data=(traindata))
+
+traindata$SalePrice[1:10]
+
+```
+#Regression
+??lim
+``` {r}
+
+lm(SalePrice~SaleType + GarageCond, traindata)
+
+
+lm(loss~.,AllState.Dataframe)
+
+model <-glm(formula = Survived~ Fare + Age, data = Datatrain, family = "binomial")
+
+#--------Hajar
+glm(formula = SalePrice ~ as.factor(SaleType) + MSSubClass, data=traindata)
+traindata$SalePrice
+
+```
+## Missing Data
+
+traindata[!complete.cases(traindata$MSSubClass), 2 ]
+traindata[!complete.cases(traindata$MSZoning), 2 ]
+traindata[!complete.cases(traindata$LotFrontage), 2 ]
+traindata[!complete.cases(traindata$LotFrontage), 4 ] <-0
+traindata[!complete.cases(traindata$LotArea), 1] # Ok, no missing
+traindata[!complete.cases(traindata$Street), 1] # ok, no missing
+traindata[!complete.cases(traindata$Alley), c(1,7)] 
+## Alot of missing!!! you may delete the Alley variable
+traindata[!complete.cases(traindata$LotShape), c(1,8)]  ## no missing
+traindata[!complete.cases(traindata$LandContour), 9]   ## no missing
+traindata[!complete.cases(traindata$Utilities), 10]   ##no missing
+traindata[!complete.cases(traindata$LotConfig), 11]   ##no missing
+traindata[!complete.cases(traindata$LandSlope), 12]   ##no missing
+traindata[!complete.cases(traindata$Neighborhood), 13]   ##no missing
+
+traindata[!complete.cases(traindata$Condition1), 14]   ##no missing
+traindata[!complete.cases(traindata$Condition2), 15]   ##no missing
+
+traindata[!complete.cases(traindata$BldgType), 16]   ##no missing
+traindata[!complete.cases(traindata$HouseStyle), 17]   ##no missing
+traindata[!complete.cases(traindata$OverallQual), 18]   ##no missing
+## Overall Quality can turn into ordinal/factor
+traindata[!complete.cases(traindata$ OverallCond), 19]   ##no missing
+
+
+traindata[!complete.cases(traindata$YearBuilt), 20]   ##no missing
+traindata$YearBuilt <-as.(traindata$YearBuilt)???
+traindata[!complete.cases(traindata$YearRemodAdd), 21]   ##no missing
+traindata[!complete.cases(traindata$RoofStyle), 22]
+
+traindata[!complete.cases(traindata$RoofMatl), 23]
+traindata[!complete.cases(traindata$Exterior1st), 24]
+traindata[!complete.cases(traindata$Exterior2nd), 25]
+traindata[!complete.cases(traindata$MasVnrType), 26]
+traindata[!complete.cases(traindata$MasVnrType), c(1,26)] ## Missing Data
+
+
+traindata[!complete.cases(traindata$MasVnrArea), 27]
+traindata[!complete.cases(traindata$MasVnrArea), c(1,27)] ## 0 looks like a mode
+
+traindata[!complete.cases(traindata$ExterQual), c(1,28)]
+traindata[!complete.cases(traindata$ExterCond), 29]
+
+traindata[!complete.cases(traindata$Foundation),30]
+traindata[!complete.cases(traindata$BsmtQual),31] # Missing
+traindata[!complete.cases(traindata$BsmtCond), 32] # Missing
+
+
+traindata[!complete.cases(traindata$BsmtExposure),33] #Missing
+traindata[!complete.cases(traindata$ BsmtFinType1),34] #Missing
+traindata[!complete.cases(traindata$BsmtFinSF1),35]
+
+traindata[!complete.cases(traindata$BsmtFinType2),36] #Missing
+traindata[!complete.cases(traindata$BsmtFinSF2),37]
+traindata[!complete.cases(traindata$BsmtUnfSF),38]
+traindata[!complete.cases(traindata$TotalBsmtSF),39]
+
+
+str(traindata[ , 40:49])
+traindata[!complete.cases(traindata$Heating),40]
+traindata[!complete.cases(traindata$HeatingQC),41]
+traindata[!complete.cases(traindata$CentralAir),42]
+traindata[!complete.cases(traindata$Electrical),43] one missing
+traindata[!complete.cases(traindata$X1stFlrSF),44]
+traindata[!complete.cases(traindata$X2ndFlrSF),45]
+traindata[!complete.cases(traindata$LowQualFinSF),46]
+traindata[!complete.cases(traindata$GrLivArea),47]
+traindata[!complete.cases(traindata$BsmtFullBath),48]
+traindata[!complete.cases(traindata$BsmtHalfBath),49]
+
+str(traindata[ , 50:59])
+traindata[!complete.cases(traindata$FullBath),50]
+traindata[!complete.cases(traindata$HalfBath),51]
+traindata[!complete.cases(traindata$BedroomAbvGr),52]
+traindata[!complete.cases(traindata$KitchenAbvGr),53]
+traindata[!complete.cases(traindata$KitchenQual),54]
+traindata[!complete.cases(traindata$TotRmsAbvGrd),55]
+traindata[!complete.cases(traindata$Functional),56]
+traindata[!complete.cases(traindata$Fireplaces),57] 
+traindata[!complete.cases(traindata$FireplaceQu),58] # Many missing data
+traindata[!complete.cases(traindata$GarageType),59]  # Many missing data
+
+str(traindata[ , 60:69])
+traindata[!complete.cases(traindata$GarageYrBlt),60] # Missing as NA
+traindata[!complete.cases(traindata$GarageFinish),61] # Missing as <NA>
+traindata[!complete.cases(traindata$GarageCars),62]
+traindata[!complete.cases(traindata$GarageArea),63]
+traindata[!complete.cases(traindata$GarageQual),64] # Missing
+traindata[!complete.cases(traindata$GarageCond),65] # Missing
+traindata[!complete.cases(traindata$PavedDrive),66]
+traindata[!complete.cases(traindata$WoodDeckSF),67] 
+traindata[!complete.cases(traindata$OpenPorchSF),68] 
+traindata[!complete.cases(traindata$EnclosedPorch),69]  
+
+
+str(traindata[ , 70:79])
+traindata[!complete.cases(traindata$X3SsnPorch),70] 
+traindata[!complete.cases(traindata$ScreenPorch),71] 
+traindata[!complete.cases(traindata$PoolArea),72]
+traindata[!complete.cases(traindata$PoolQC),73] ## a loooot missing
+traindata[!complete.cases(traindata$Fence),74]  ## a looooot missing
+traindata[!complete.cases(traindata$MiscFeature),75] ## a loooot missing
+traindata[!complete.cases(traindata$MiscVal),76]
+traindata[!complete.cases(traindata$MoSold),77] 
+traindata[!complete.cases(traindata$YrSold),78] 
+traindata[!complete.cases(traindata$SaleType),79] 
+
+str(traindata)
+str(traindata[ , 80:81])
+traindata[!complete.cases(traindata$SaleCondition),80] 
+traindata[!complete.cases(traindata$SalePrice),81] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+str(traindata)
+str(traindata[, 1:5])
+str(traindata[, 6:11])
+str(traindata[ , 12:19])
+str(traindata[ , 20:29])
+str(traindata[ , 30:39])
+
+
+
+
+
+for (i in seq_along(traindata)) {
+traindata[!complete.cases(traindata),c(1:4)] 
+}
+
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
